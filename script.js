@@ -53,7 +53,13 @@ function getWeather(city) {
         item.dt_txt.includes("12:00:00")
       );
       console.log(dailyForecast);
-      document.getElementById("forecast").style.display = "block";
+
+      const forecastContainer = document.getElementById("forecast");
+      forecastContainer.style.display = "block";
+      forecastContainer.innerHTML = "Weather forecast for next 5 days:"; // Reset to initial text
+
+
+      
       dailyForecast.forEach((day) => {
         const forecastElement = document.createElement("div");
         const date = new Date(day.dt * 1000);
