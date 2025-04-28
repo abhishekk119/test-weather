@@ -17,6 +17,8 @@ inputAreaTwo.addEventListener("keypress", function (e) {
 });
 
 function getWeather(city) {
+  const loadingElement = document.getElementById("loading");
+  loadingElement.style.display = "block";
   fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apikey}`
   )
@@ -81,6 +83,9 @@ function getWeather(city) {
 
         document.getElementById("forecast").appendChild(forecastElement);
       });
+    }).finally(() => {
+      // Hide loading spinner when done (success or failure)
+      loadingElement.style.display = "none";
     });
 }
 
